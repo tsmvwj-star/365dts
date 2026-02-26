@@ -1,235 +1,393 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PK44.COM - 移动应用</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="appstyle.css">
-<style>
- .homeheade {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 1px;
-            background-color: #1a2236;
-            border-bottom: 1px solid #2a344a;
-
-        }
-        
-        .icon-inner {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #252f45;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .icon-inner:hover {
-            background-color: #2f3b58;
-            transform: scale(1.05);
-        }
-        
-        .fa-bars {
-            font-size: 18px;
-            color: #6c7a9c;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: centelr;
-           padding-right: 10px;
-        }
-        
-        .logo img {
-            height: 40px;
-            width: 120px;
-        }
-        
-        .home-amount {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 16px;
-            border-radius: 12px;
-            min-width: 110px;
-            justify-content: center;
-        }
-        
-        .home-amount span {
-            font-weight: 700;
-            font-size: 20px;
-            color: #f0b90b;
-            letter-spacing: 0.5px;
-        }
-        
-        .fa-piggy-bank {
-            font-size: 18px;
-            color: #fff;
-            background-color: #0ead6e;
-            padding: 8px;
-            border-radius: 10px;
-        }
-</style>
+    <link rel="stylesheet" href="promo_style.css">
 </head>
+
 <body>
+
+
     <div class="container">
-    
-        
         <!-- 首页 -->
         <div id="home-page" class="content-area active">
+
             <div class="homeheade">
-                <div class="icon-inner">
+
+                <!-- 菜单按钮 -->
+                <div class="slidebar-inner" id="menuToggle">
                     <i class="fa-solid fa-bars"></i>
                 </div>
+
                 <div class="logo">
-                    <img src="img/logo.png" alt="">
+                    <img src="img/logo.png">
                 </div>
-               
                 <div class="home-amount">
                     <span>R$1288</span>
                     <i class="fa-solid fa-piggy-bank"></i>
                 </div>
-                
-            </div>
 
-            <div class="balance-card">
-                <div>账户余额</div>
-                <div class="balance-amount">R$ 0.38880</div>
-                <div class="user-id">ID: 2534567045 • 账户: 99998856752</div>
             </div>
-            
-            <div class="image-section">
-                <!-- 首页图片 1 -->
-                <img src="https://via.placeholder.com/400x250/0c1e3e/ffcc00?text=PK44.COM+立即投注%21" alt="PK44.COM推广" class="promo-image">
+            <!-- 遮罩层 -->
+            <div class="overlay" id="overlay"></div>
+
+            <!-- 侧边栏菜单 - 放在container内部 -->
+            <div class="slidebar" id="slidebarPanel">
+                <div class="slidebar-header">
+                    <div class="slidebar-title">导航菜单</div>
+                    <div class="close-btn" id="closeslidebar">
+                        <i class="fa-solid fa-times"></i>
+                    </div>
+                </div>
+                <ul class="slidebar-list">
+                    <li><i class="fa-solid fa-home"></i>首页</li>
+                    <li><i class="fa-solid fa-gamepad"></i>所有游戏</li>
+                    <li><i class="fa-solid fa-user"></i>个人中心</li>
+                    <li><i class="fa-solid fa-trophy"></i>锦标赛</li>
+                    <li><i class="fa-solid fa-history"></i>游戏记录</li>
+                    <li><i class="fa-solid fa-chart-bar"></i>数据统计</li>
+                    <li><i class="fa-solid fa-headset"></i>客服支持</li>
+                    <li><i class="fa-solid fa-gear"></i>设置</li>
+                    <li><i class="fa-solid fa-question-circle"></i>帮助中心</li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i>退出登录</li>
+                </ul>
             </div>
-            
-            <div class="section-title">热门游444戏</div>
-            <div class="game-grid">
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-dragon"></i></div>
-                    <div class="game-name">龙之宝藏</div>
+            <div class="home-contaner">
+                <div class="slideshow-container">
+                    <div class="slideshow-wrapper">
+                        <img src="img/1.png" data-index="0" alt="Slide 1">
+                        <img src="img/3.png" data-index="2" alt="Slide 3">
+                        <img src="img/4.png" data-index="3" alt="Slide 4">
+                        <img src="img/5.png" data-index="4" alt="Slide 5">
+                    </div>
                 </div>
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-fish"></i></div>
-                    <div class="game-name">大鱼捕手</div>
+                <div class="image-section">
+                    <div class="pro1"><img src="img/1.png" alt=""></div>
+                    <div class="pro1"><img src="img/2.png" alt=""></div>
+                    <div class="pro1"><img src="img/3.png" alt=""></div>
                 </div>
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-crown"></i></div>
-                    <div class="game-name">王者之战</div>
+                <div class="scoring">客服不太明白你的意思，还请详细描述一下你遇到的问题，以便客服解决哦~！</div>
+
+                <div class="game-grid">
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-dragon"></i></div>
+                        <div class="game-name">龙之宝藏</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-fish"></i></div>
+                        <div class="game-name">大鱼捕手</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-crown"></i></div>
+                        <div class="game-name">王者之战</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-tint"></i></div>
+                        <div class="game-name">水花四溅</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-gem"></i></div>
+                        <div class="game-name">宝石富翁</div>
+                    </div>
+                    <div class="game-item">
+                        <div class="game-icon"><i class="fas fa-coins"></i></div>
+                        <div class="game-name">财富转盘</div>
+                    </div>
                 </div>
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-tint"></i></div>
-                    <div class="game-name">水花四溅</div>
+
+                <div class="countdown">
+                    <div class="countdown-text">优惠倒计时:</div>
+                    <div class="countdown-time" id="countdown-timer">00:11:03</div>
                 </div>
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-gem"></i></div>
-                    <div class="game-name">宝石富翁</div>
+                <div class="image-section">
+                    <img src="https://via.placeholder.com/400x300/152642/00ff99?text=最受欢迎游戏+PG+PP+Sprime+POPOK"
+                        alt="热门游戏" class="promo-image">
                 </div>
-                <div class="game-item">
-                    <div class="game-icon"><i class="fas fa-coins"></i></div>
-                    <div class="game-name">财富转盘</div>
-                </div>
-            </div>
-            
-            <div class="countdown">
-                <div class="countdown-text">优惠倒计时:</div>
-                <div class="countdown-time" id="countdown-timer">00:11:03</div>
-            </div>
-            
-            <div class="image-section">
-                <!-- 首页图片 2 -->
-                <img src="https://via.placeholder.com/400x300/152642/00ff99?text=最受欢迎游戏+PG+PP+Sprime+POPOK" alt="热门游戏" class="promo-image">
             </div>
         </div>
-        
         <!-- 促销页面 -->
         <div id="promotion-page" class="content-area">
-            <div class="promo-tabs">
+
+
+            <!-- 标签栏 (原始结构) -->
+            <div class="promo-tabs" id="promoTabs">
                 <div class="promo-tab active" data-tab="events">活动</div>
                 <div class="promo-tab" data-tab="rebate">返利</div>
-                <div class="promo-tab" data-tab="vip">VIP</div>
+                <div class="promo-tab" data-tab="vip"> VIP</div>
                 <div class="promo-tab" data-tab="code">兑换码</div>
                 <div class="promo-tab" data-tab="history">历史</div>
                 <div class="promo-tab" data-tab="pending">待处理</div>
             </div>
-            
-            <div class="promo-card">
-                <div class="promo-header">
-                    <div class="promo-title">安全港湾</div>
-                    <div class="promo-badge">新用户</div>
-                </div>
-                <div class="promo-desc">新用户注册福利</div>
-                <div style="margin: 20px 0;">
-                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <div style="color: #00ff99; font-size: 1.2rem; margin-right: 10px;">✓</div>
-                        <div>立即领取R$100</div>
+
+            <!-- 内容区域：完全真实的HTML内容，每个tab对应专属模块 (不再“仅作示意”) -->
+            <div class="promo-panel" id="contentPanel">
+                <!-- 默认显示活动模块（与active tab匹配） -->
+                <div id="events-content">
+                    <div class="events-container">
+                        <div class="event-item">
+                            <img src="img/1.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/4.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/1.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/5.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/2.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/3.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/3.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/3.png" alt="">
+                        </div>
+                        <div class="event-item">
+                            <img src="img/3.png" alt="">
+                        </div>
                     </div>
-                    <div style="display: flex; align-items: center;">
-                        <div style="color: #00ff99; font-size: 1.2rem; margin-right: 10px;">✓</div>
-                        <div>高达100倍返现奖励</div>
+                </div>
+
+                <!-- 返利内容 (初始隐藏) -->
+                <div id="rebate-content" style="display: none;">
+                    <div style="font-size: 1.8rem; font-weight: 800; margin-bottom: 5px; color: #0b2545;">💰 返利翻倍</div>
+                    <div style="margin-bottom: 15px; color: #2f476b;">今日超级返利比例 <strong>8.5%</strong></div>
+                    <div class="rebate-grid">
+                        <div class="rebate-card"><span class="rebate-percent">5%</span>
+                            <div class="rebate-desc">手机数码</div>
+                        </div>
+                        <div class="rebate-card"><span class="rebate-percent">12%</span>
+                            <div class="rebate-desc">时尚服饰</div><span
+                                style="font-size:0.7rem; background:gold; border-radius:30px; padding:2px 8px;">翻倍</span>
+                        </div>
+                        <div class="rebate-card"><span class="rebate-percent">3%</span>
+                            <div class="rebate-desc">家电百货</div>
+                        </div>
+                        <div class="rebate-card"><span class="rebate-percent">8%</span>
+                            <div class="rebate-desc">美妆个护</div>
+                        </div>
+                    </div>
+                    <div class="total-rebate">
+                        <span>📊 本月累积返利</span>
+                        <span style="font-size:1.6rem; font-weight:800; color:#1e3a5f;">¥168.30</span>
+                    </div>
+                    <div style="margin-top:16px; font-size:0.9rem;">💡 每周末返利额外+2%</div>
+                </div>
+
+                <!-- VIP内容 -->
+                <div id="vip-content" style="display: none;">
+                    <div class="vip-tier">
+                        <div class="table-title">
+                            <h2>VIP等级权益表</h2>
+                            <p>尊贵特权，层层升级</p>
+                        </div>
+                        <table class="vip-table">
+                            <thead>
+                                <tr>
+                                    <th>VIP等级</th>
+                                    <th>投注金额</th>
+                                    <th>晋级人数</th>
+                                    <th>日奖金</th>
+                                    <th>周奖金</th>
+                                    <th>月奖金</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VIP1</td>
+                                    <td>100.00</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>VIP2</td>
+                                    <td>1,000.00</td>
+                                    <td>3</td>
+                                    <td>0.5</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>VIP3</td>
+                                    <td>3,000.00</td>
+                                    <td>6</td>
+                                    <td>1.5</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>VIP4</td>
+                                    <td>4,000.00</td>
+                                    <td>8</td>
+                                    <td>2.5</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>VIP5</td>
+                                    <td>5,000.00</td>
+                                    <td>6</td>
+                                    <td>3.5</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <button class="primary-btn">立即领取</button>
-            </div>
-            
-            <div class="promo-card">
-                <div class="promo-header">
-                    <div class="promo-title">财富密码2026</div>
-                </div>
-                <div class="promo-desc">与好友一起游戏，赢取丰厚奖励</div>
-                <div style="margin: 20px 0;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <div>邀请奖励</div>
-                        <div style="color: #00ff99; font-weight: bold;">R$70</div>
+
+                <!-- 兑换码内容 -->
+                <div id="code-content" style="display: none;">
+                    <div style="font-size: 1.8rem; font-weight: 800; color: #0b2545;">🎫 兑换码</div>
+                    <div class="code-box">
+                        <div>输入兑换码领取好礼</div>
+                        <div class="code-input-group">
+                            <input type="text" id="codeInput" placeholder="例如：VIP888" value="">
+                            <button id="redeemBtn">兑换</button>
+                        </div>
+                        <div id="redeemMessage"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0;">
-                        <div>投注佣金</div>
-                        <div style="color: #ffcc00; font-weight: bold;">5%</div>
+                    <div class="code-history">
+                        <div class="code-history-item"><span>🎁 新客礼包</span> <span style="color:green;">可用</span></div>
+                        <div class="code-history-item"><span>🎁 618超值券</span> <span style="color:#c4452b;">今晚过期</span>
+                        </div>
+                        <div class="code-history-item"><span>🎁 会员日福利</span> <span style="color:#888;">已兑换</span></div>
                     </div>
                 </div>
-                <button class="primary-btn">立即参与</button>
-            </div>
-            
-            <div class="promo-card">
-                <div class="promo-header">
-                    <div class="promo-title">每日登录</div>
+
+                <!-- 历史内容 -->
+                <div id="history-content">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>单号</th>
+                                <th>活动类型</th>
+                                <th>奖金</th>
+                                <th>时间</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="promo-desc">7天 = R$22免费奖励！</div>
-                
-                <div class="days-grid">
-                    <div class="day-item active">第1天<br>R$1</div>
-                    <div class="day-item">第2天<br>R$1</div>
-                    <div class="day-item">第3天<br>R$2</div>
-                    <div class="day-item">第4天<br>R$3</div>
-                    <div class="day-item">第5天<br>R$3</div>
-                    <div class="day-item">第6天<br>R$5</div>
-                    <div class="day-item">第7天<br>R$7</div>
+
+                <!-- 待处理内容 -->
+                <div id="pending-content" style="display: none;">
+                    <table class="pending-table">
+                        <thead>
+                            <tr>
+                                <th>单号</th>
+                                <th>活动类型</th>
+                                <th>奖金</th>
+                                <th>时间</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>vip日</td>
+                                <td>0.2</td>
+                                <td>2026/02/26</td>
+                                <td>已领取</td>
+                            </tr>
+                            <tr>
+                                <td>123457</td>
+                                <td>vip周</td>
+                                <td>0.5</td>
+                                <td>2026/02/25</td>
+                                <td>已领取</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                
-                <button class="primary-btn">立即领取！</button>
-            </div>
-            
-            <div class="promo-card">
-                <div class="promo-header">
-                    <div class="promo-title">VIP特权</div>
-                    <div class="promo-badge">VIP</div>
-                </div>
-                <div class="promo-desc">每日累计充值 - VIP专享</div>
-                <div class="promo-value">R$777奖励</div>
-                <button class="primary-btn">了解更多</button>
-            </div>
-            
-            <div class="image-section">
-                <!-- 促销页面图片 -->
-                <img src="https://via.placeholder.com/400x300/0c1e3e/ff3366?text=宝箱活动+SPRIBE+POPOK%21" alt="宝箱活动" class="promo-image">
             </div>
         </div>
-        
+
         <!-- 存款页面 -->
         <div id="deposit-page" class="content-area">
             <div class="promo-card">
@@ -238,190 +396,254 @@
                 </div>
                 <div class="promo-desc" style="text-align: center; margin-bottom: 25px;">
                     <div style="font-size: 1.5rem; color: #00ff99; margin-bottom: 10px;">邀请1人获得R$70 🎁🎁🎁</div>
-                    <div style="font-size: 1.2rem;">存款范围: R$ 5 - 50,000</div>
                 </div>
-                
+
                 <div class="payment-methods">
                     <div class="payment-method active">
                         <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
-                        <div>PIX支付</div>
+                        <div style="color: aliceblue;">PIX支付</div>
                     </div>
                     <div class="payment-method">
                         <div class="payment-icon"><i class="fas fa-credit-card"></i></div>
-                        <div>信用卡</div>
+                        <div style="color: aliceblue;">信用卡</div>
                     </div>
                 </div>
-                
+                <div class="input-wrapper" id="inputWrapper">
+                    <input type="text" id="numberInput" placeholder="5-50.000" inputmode="numeric" autocomplete="off">
+                    <div class="action-group">
+                        <div class="spin-group">
+                            <div class="spin-btn" id="incrementBtn">▲</div>
+                            <div class="spin-btn" id="decrementBtn">▼</div>
+                        </div>
+                        <button class="clear-btn" id="clearBtn" aria-label="清除数字">✕</button>
+                    </div>
+                </div>
+
                 <div style="margin: 25px 0;">
                     <div style="color: #ffcc00; margin-bottom: 15px; text-align: center;">推荐金额</div>
-                    <div class="deposit-options">
-                        <div class="amount-btn">R$ 10.00</div>
-                        <div class="amount-btn">R$ 30.00</div>
-                        <div class="amount-btn">R$ 50.00</div>
-                        <div class="amount-btn">R$ 100.00</div>
-                        <div class="amount-btn">R$ 300.00</div>
-                        <div class="amount-btn">R$ 500.00</div>
-                        <div class="amount-btn">R$ 1,000.00</div>
-                        <div class="amount-btn">R$ 5,000.00</div>
-                        <div class="amount-btn">R$ 10,000.00</div>
+                    <div class="quick-buttons">
+                        <button class="quick-btn" data-value="10">10000</button>
+                        <button class="quick-btn" data-value="25">25</button>
+                        <button class="quick-btn" data-value="50">50</button>
+                        <button class="quick-btn" data-value="100">100</button>
+                        <button class="quick-btn" data-value="365">365</button>
+                        <button class="quick-btn" data-value="314">314</button> <!-- 原3.14改为整数314 -->
                     </div>
                 </div>
-                
+
                 <button class="primary-btn">立即存款</button>
             </div>
-            
-            <div class="image-section">
-                <!-- 存款页面图片 -->
-                <img src="https://via.placeholder.com/400x250/152642/ffcc00?text=安全快速存款" alt="安全存款" class="promo-image">
-            </div>
         </div>
-        
+
         <!-- 取款页面 -->
         <div id="withdraw-page" class="content-area">
-            <div class="withdraw-info">
-                <div style="text-align: center; margin-bottom: 15px;">
-                    <div style="font-size: 1.2rem; color: #ffcc00;">账户余额</div>
-                    <div class="withdraw-amount">R$ 0.30</div>
-                </div>
-                
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <div style="color: #ffcc00; margin-bottom: 10px;">取款方式</div>
-                    <div style="font-size: 1.5rem; color: #00ff99;">PIX支付</div>
+            <div class="withdraw-header">
+                <h2>
+                    <i class="fas fa-pig"></i> Saque
+                </h2>
+                <div class="balance-badge">
+                    <i class="fas fa-credit-card" style="margin-right: 6px;"></i> Conta <span>R$ 0,00</span>
                 </div>
             </div>
-            
-            <div class="promo-card">
-                <div style="color: #ffcc00; margin-bottom: 15px; text-align: center;">取款金额</div>
-                <div class="deposit-options">
-                    <div class="amount-btn">R$ 10.00</div>
-                    <div class="amount-btn">R$ 30.00</div>
-                    <div class="amount-btn">R$ 100.00</div>
-                    <div class="amount-btn">R$ 1,000.00</div>
-                    <div class="amount-btn">R$ 5,000.00</div>
-                    <div class="amount-btn">R$ 10,000.00</div>
-                    <div class="amount-btn">R$ 30,000.00</div>
-                    <div class="amount-btn">R$ 50,000.00</div>
+
+            <div class="withdrwa-type" id="methodTabs">
+                <div class="withdraw-option active" data-method="pix">
+                    <i class="fas fa-pig"></i>
+                    <span>PIX取款</span>
                 </div>
-                <div style="text-align: center; margin-top: 15px; color: #cccccc;">取款范围: 10.00 - 50,000.00</div>
+                <div class="withdraw-option" data-method="bank">
+                    <i class="fas fa-wallet"></i>
+                    <span>银行卡取款</span>
+                </div>
+                <div class="withdraw-option" data-method="credit">
+                    <i class="fas fa-pig"></i>
+                    <span>信用卡</span>
+                </div>
             </div>
-            
+
+            <!-- 金额卡片 -->
             <div class="promo-card">
-                <div style="color: #ffcc00; margin-bottom: 15px;">取款信息</div>
-                
-                <div class="form-group">
-                    <label class="form-label">全名</label>
-                    <input type="text" class="form-input" placeholder="请输入您的姓名">
+                <div class="wquick-buttons">
+                    <button class="wquick-btn" data-value="10">10</button>
+                    <button class="wquick-btn" data-value="25">25</button>
+                    <button class="wquick-btn" data-value="50">50</button>
+                    <button class="wquick-btn" data-value="100">100</button>
+                    <button class="wquick-btn" data-value="100">100</button>
+                    <button class="wquick-btn" data-value="100">100</button>
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-label">CPF号码</label>
-                    <input type="text" class="form-input" placeholder="请输入CPF号码">
+                <div class="winput-wrapper" id="winputWrapper">
+                    <!-- 无初始值，placeholder="0" -->
+                    <input type="text" id="numberInputw" placeholder="0" inputmode="numeric" autocomplete="off">
+                    <div class="waction-group">
+                        <div class="wsp-group">
+                            <div class="wspin-btn" id="upBtn">▲</div>
+                            <div class="wspin-btn" id="downtBtn">▼</div>
+                        </div>
+                        <button class="cl-btn" id="clBtn" aria-label="清除数字">✕</button>
+                    </div>
                 </div>
-                
+            </div>
+
+            <!-- 取款信息卡片 -->
+            <div class="promo-card">
+                <div style="color: #ffcc00; margin-bottom: 20px; font-size: 1.3rem;">📋 取款信息</div>
+
+                <div id="pix-block" class="method-block active-block">
+                    <div class="form-group">
+                        <label class="form-label">全名</label>
+                        <input type="text" class="form-input" placeholder="Por favor, insira seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">CPF号码</label>
+                        <input type="text" class="form-input" placeholder="Por favor, insira o CPF">
+                    </div>
+                    <div class="cpf-note">CPF ID · 11 dígitos</div>
+                </div>
+
+                <div id="bank-block" class="method-block">
+                    <div class="form-group">
+                        <label class="form-label">全名</label>
+                        <input type="text" class="form-input" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">银行账号</label>
+                        <input type="text" class="form-input" placeholder="请输入银行账号">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">CPF (可选)</label>
+                        <input type="text" class="form-input" placeholder="000.000.000-00">
+                    </div>
+                </div>
+
+                <div id="credit-block" class="method-block">
+                    <div class="form-group">
+                        <label class="form-label">卡号</label>
+                        <input type="text" class="form-input" placeholder="请输入卡号">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">持卡人姓名</label>
+                        <input type="text" class="form-input" placeholder="Nome no cartão">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">CVV</label>
+                        <input type="text" class="form-input" placeholder="123">
+                    </div>
+                </div>
+
                 <button class="primary-btn">提交取款申请</button>
             </div>
-            
-            <div class="image-section">
-                <!-- 取款页面图片 -->
-                <img src="https://via.placeholder.com/400x200/0c1e3e/00ff99?text=快速安全取款" alt="快速取款" class="promo-image">
-            </div>
         </div>
-        
+
         <!-- 个人资料页面 -->
         <div id="profile-page" class="content-area">
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
+            <div class="prof-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info">
+
+                        <p>ID：<span id="idCopy">855622222</span>
+                            <button id="copyIdBtn"><i class="fa-solid fa-copy"></i></button>
+                        </p>
+                        <p>账号：<span>855622222</span> </p>
+                        <h3>5252 R$</h3>
+                    </div>
+
                 </div>
-                <div class="profile-name">PK44用户</div>
-                <div style="color: #cccccc;">ID: 2534567045 • 账户: 99998856752</div>
-                <div style="color: #00ff99; font-size: 1.5rem; margin-top: 10px;">R$ 0.30</div>
-            </div>
-            
-            <div class="quick-actions" style="margin-bottom: 25px;">
-                <div class="action-btn" id="profile-withdraw">
-                    <i class="fas fa-wallet" style="margin-right: 8px;"></i> 取款
-                </div>
-                <div class="action-btn" id="profile-deposit">
-                    <i class="fas fa-money-bill-wave" style="margin-right: 8px;"></i> 存款
-                </div>
-            </div>
-            
-            <div class="vip-progress">
-                <div class="vip-header">
-                    <div class="vip-level">VIP1</div>
-                    <div class="vip-amount">65.50</div>
-                </div>
-                <div style="margin-bottom: 8px; font-size: 0.9rem;">还需投注金额</div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <div class="progress-text">
-                    <div>投注要求</div>
-                    <div>34.50/100.00</div>
+
+                <div class="quick-actions">
+                    <div class="action-btn" id="profile-withdraw">
+                        <i class="fas fa-wallet"></i> 取款
+                    </div>
+                    <div class="action-btn" id="profile-deposit">
+                        <i class="fas fa-money-bill-wave"></i> 存款
+                    </div>
                 </div>
             </div>
-            
-            <div style="margin-bottom: 25px;">
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-user-friends"></i></div>
-                    <div class="menu-text">邀请好友</div>
-                    <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-gift"></i></div>
-                    <div class="menu-text">兑换码</div>
-                    <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-headset"></i></div>
-                    <div class="menu-text">24/7客服支持</div>
-                    <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="menu-text">安全中心</div>
-                    <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-icon"><i class="fas fa-sign-out-alt" style="color: #ff3366;"></i></div>
-                    <div class="menu-text">退出登录</div>
-                    <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+
+            <div class="prof-card">
+                <div class="vip-progress">
+                    <div class="vip-header">
+                        <div class="vip-level">VIP1</div>
+                        <div class="vip-amount">65.50</div>
+                    </div>
+                    <div style="margin-bottom: 8px; font-size: 0.9rem; color: aliceblue;">还需投注金额</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">
+                        <div>投注要求</div>
+                        <div>34.50/100.00</div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="image-section">
-                <!-- 个人资料页面图片 -->
-                <img src="https://via.placeholder.com/400x300/152642/ffcc00?text=邀请1人+获得R%24+70+%2B+5%25+佣金" alt="邀请好友" class="promo-image">
+
+            <div class="prof-card">
+                <div class="prof-menu">
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-user-friends"></i></div>
+                        <div class="menu-text">邀请好友</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-gift"></i></div>
+                        <div class="menu-text">兑换码</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-headset"></i></div>
+                        <div class="menu-text">24/7客服支持</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="menu-text">安全中心</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-sign-out-alt" style="color: #ff3366;"></i></div>
+                        <div class="menu-text">退出登录</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-sign-out-alt" style="color: #ff3366;"></i></div>
+                        <div class="menu-text">退出登录</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon"><i class="fas fa-sign-out-alt" style="color: #ff3366;"></i></div>
+                        <div class="menu-text">退出登录</div>
+                        <div class="menu-arrow"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+
+                </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8rem;">
-                PK44.COM • 请理性投注
-            </div>
+
         </div>
-        
+
         <!-- 底部导航栏 -->
         <div class="bottom-nav">
             <a href="#" class="nav-item active" data-page="home">
                 <i class="fas fa-home nav-icon"></i>
                 <span class="nav-label">首页</span>
             </a>
-            
+
             <a href="#" class="nav-item" data-page="promotion">
                 <i class="fas fa-gift nav-icon"></i>
                 <span class="nav-label">促销</span>
             </a>
-            
+
             <a href="#" class="nav-item" data-page="deposit">
                 <i class="fas fa-money-bill-wave nav-icon"></i>
                 <span class="nav-label">存款</span>
             </a>
-            
+
             <a href="#" class="nav-item" data-page="withdraw">
                 <i class="fas fa-wallet nav-icon"></i>
                 <span class="nav-label">取款</span>
             </a>
-            
+
             <a href="#" class="nav-item" data-page="profile">
                 <i class="fas fa-user nav-icon"></i>
                 <span class="nav-label">我的</span>
@@ -429,137 +651,8 @@
         </div>
     </div>
 
-    <script>
-        // 页面导航功能
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // 移除所有活跃状态
-                document.querySelectorAll('.nav-item').forEach(navItem => {
-                    navItem.classList.remove('active');
-                });
-                
-                // 添加活跃状态到点击项
-                this.classList.add('active');
-                
-                // 隐藏所有页面
-                document.querySelectorAll('.content-area').forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // 显示对应页面
-                const pageId = this.getAttribute('data-page') + '-page';
-                document.getElementById(pageId).classList.add('active');
-            });
-        });
-        
-        // 快速操作按钮
-        document.getElementById('btn-deposit').addEventListener('click', function() {
-            document.querySelector('[data-page="deposit"]').click();
-        });
-        
-        document.getElementById('btn-withdraw').addEventListener('click', function() {
-            document.querySelector('[data-page="withdraw"]').click();
-        });
-        
-        document.getElementById('profile-deposit').addEventListener('click', function() {
-            document.querySelector('[data-page="deposit"]').click();
-        });
-        
-        document.getElementById('profile-withdraw').addEventListener('click', function() {
-            document.querySelector('[data-page="withdraw"]').click();
-        });
-        
-        // 选择支付方式
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                document.querySelectorAll('.payment-method').forEach(m => {
-                    m.classList.remove('active');
-                });
-                this.classList.add('active');
-            });
-        });
-        
-        // 选择存款/取款金额
-        document.querySelectorAll('.amount-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.amount-btn').forEach(b => {
-                    b.style.background = 'rgba(255, 255, 255, 0.1)';
-                    b.style.borderColor = 'rgba(255, 204, 0, 0.3)';
-                });
-                this.style.background = 'rgba(255, 204, 0, 0.3)';
-                this.style.borderColor = '#ffcc00';
-            });
-        });
-        
-        // 主要按钮点击事件
-        document.querySelectorAll('.primary-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const action = this.textContent.trim();
-                alert(`您点击了: ${action}\n\n这是一个演示。在实际应用中，此操作将被处理。`);
-            });
-        });
-        
-        // 菜单项点击事件
-        document.querySelectorAll('.menu-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const text = this.querySelector('.menu-text').textContent;
-                alert(`打开: ${text}`);
-            });
-        });
-        
-        // 促销标签页
-        document.querySelectorAll('.promo-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.promo-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                const tabId = this.getAttribute('data-tab');
-                alert(`已选择标签: ${tabId}`);
-            });
-        });
-        
-        // 倒计时功能
-        function startCountdown() {
-            const countdownElement = document.getElementById('countdown-timer');
-            let time = 11 * 60 + 3; // 11分钟3秒
-            
-            function updateCountdown() {
-                const minutes = Math.floor(time / 60);
-                const seconds = time % 60;
-                
-                countdownElement.textContent = 
-                    `00:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                if (time > 0) {
-                    time--;
-                } else {
-                    clearInterval(countdownInterval);
-                    countdownElement.textContent = "00:00:00";
-                    countdownElement.style.color = "#ff3366";
-                }
-            }
-            
-            updateCountdown();
-            const countdownInterval = setInterval(updateCountdown, 1000);
-        }
-        
-        // 初始化首页为活跃状态
-        document.querySelector('[data-page="home"]').click();
-        
-        // 启动倒计时
-        startCountdown();
-        
-        // 游戏项点击事件
-        document.querySelectorAll('.game-item').forEach(game => {
-            game.addEventListener('click', function() {
-                const gameName = this.querySelector('.game-name').textContent;
-                alert(`正在打开: ${gameName} 游戏`);
-            });
-        });
-    </script>
+    <script src="javascript.js"></script>
+    <script src="promo_scrip.js"></script>
 </body>
+
 </html>
